@@ -18,6 +18,7 @@ enableRobotsTXT = true
   centerTheme = false
   showMenuItems = 3
   favicon = "favicon.ico"
+  showLanguageSelector = true
 
 [languages]
   [languages.en]
