@@ -1,1 +1,37 @@
----\ntitle: \"Testing the Auto-Translation Workflow\"\ndate: 2025-12-20T17:00:00Z\ndescription: \"A test article to verify the automatic translation workflow\"\ntags: [\"testing\", \"workflow\", \"automation\"]\n---\n\n## Introduction\n\nThis is a test article to verify that the automatic translation workflow is working correctly. When this file is pushed to the main branch, the GitHub Actions workflow should automatically translate it to Chinese and create a corresponding file in the Chinese content directory.\n\n## How It Works\n\n1. You write content in either English or Chinese\n2. Push to the main branch\n3. GitHub Actions automatically detects the language\n4. The Gemini API translates the content\n5. A new file is created with the translation\n6. The site is automatically deployed\n\n## Features\n\n- Automatic language detection\n- Preserves all markdown formatting\n- Translates frontmatter (title, description)\n- Handles code blocks correctly\n- Creates corresponding files for each language\n\n## Next Steps\n\nYou can now:\n1. Write your content in either language\n2. Let the automation handle translations\n3. Review the generated files before deployment\n4. Enjoy bilingual content with minimal effort!\n\nFeel free to delete this test file once you've verified the workflow is working.\n"}}
+---
+title: "Testing the Auto-Translation Workflow"
+date: 2025-12-20T17:00:00Z
+description: "A test article to verify the automatic translation workflow"
+tags: ["testing", "workflow", "automation"]
+---
+
+## Introduction
+
+This is a test article to verify that the automatic translation workflow is working correctly. When this file is pushed to the main branch, the GitHub Actions workflow should automatically translate it to Chinese and create a corresponding file in the Chinese content directory.
+
+## How It Works
+
+1. You write content in either English or Chinese
+2. Push to the main branch
+3. GitHub Actions automatically detects the language
+4. The Gemini API translates the content
+5. A new file is created with the translation
+6. The site is automatically deployed
+
+## Features
+
+- Automatic language detection
+- Preserves all markdown formatting
+- Translates frontmatter (title, description)
+- Handles code blocks correctly
+- Creates corresponding files for each language
+
+## Next Steps
+
+You can now:
+1. Write your content in either language
+2. Let the automation handle translations
+3. Review the generated files before deployment
+4. Enjoy bilingual content with minimal effort!
+
+Feel free to delete this test file once you've verified the workflow is working.
