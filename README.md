@@ -14,11 +14,10 @@ This repository contains a Hugo site using the [Terminal theme](https://github.c
 
 ## Local development
 
-1. Clone this repository. The Terminal theme is vendored under `themes/terminal/`. To refresh it later, pull the latest changes inside that directory:
+1. Clone this repository (with submodules):
 
    ```bash
-   cd themes/terminal
-   git pull origin master
+   git clone --recurse-submodules https://github.com/wewewexiao2008/hugo-eternal-blogs.git
    ```
 
 2. Start the local server from the project root:
@@ -31,14 +30,11 @@ This repository contains a Hugo site using the [Terminal theme](https://github.c
 
 ## Publishing
 
-- Set `baseURL` in `config.toml` to the production URL before deploying.
-- Build static files with:
+Simply push your changes to the `main` branch. GitHub Actions will automatically:
+- Build the Hugo site
+- Deploy to GitHub Pages at https://wewewexiao2008.github.io/hugo-eternal-blogs/
 
-  ```bash
-  hugo
-  ```
-
-  The generated site will be in `public/`. Deploy this directory to your hosting provider (GitHub Pages, Netlify, Cloudflare Pages, etc.).
+No manual deployment steps needed.
 
 ## Content workflow
 
