@@ -177,26 +177,67 @@ def main():
     en_posts = glob.glob('content/en/posts/*.md')
     zh_posts = glob.glob('content/zh-cn/posts/*.md')
     
-    all_posts = en_posts + zh_posts
-    
-    if not all_posts:
+    if not en_posts and not zh_posts:
         print("No markdown files found in content directories")
         return
     
-    print(f"Found {len(all_posts)} markdown files")
+    print(f"Found {len(en_posts)} English posts and {len(zh_posts)} Chinese posts")
     print(f"Starting translation process...")
     print(f"API Endpoint: {endpoint}")
     print()
     
     translated_count = 0
+    skipped_count = 0
     failed_count = 0
     
-    for filepath in all_posts:
+    # Process English posts
+    print("Processing English posts...")
+    for filepath in en_posts:
         try:
-            # Skip files that already have language suffix (already translated)
             path_obj = Path(filepath)
-            if path_obj.stem.endswith('.en') or path_obj.stem.endswith('.zh-cn'):
-                print(f"⊘ Skipping already translated file: {filepath}")
+            base_name = path_obj.stem
+            
+            # Skip if already has a language suffix
+            if base_name.endswith('.en') or base_name.endswith('.zh-cn'):
+                print(f"⊘ Skipping: {filepath} (already has language suffix)")
+                skipped_count += 1
+                continue
+            
+            # Check if Chinese translation already exists
+            zh_version = path_obj.parent / (base_name + '.zh-cn.md')
+            if zh_version.exists():
+                print(f"⊘ Skipping: {filepath} (Chinese version already exists)")
+                skipped_count += 1
+                continue
+            
+            output_path, was_translated = process_file(filepath, api_key, endpoint)
+            translated_count += 1
+            
+        except Exception as e:
+            print(f"✗ Error processing {filepath}: {e}")
+            failed_count += 1
+            continue
+        
+        print()
+    
+    # Process Chinese posts
+    print("Processing Chinese posts...")
+    for filepath in zh_posts:
+        try:
+            path_obj = Path(filepath)
+            base_name = path_obj.stem
+            
+            # Skip if already has a language suffix
+            if base_name.endswith('.en') or base_name.endswith('.zh-cn'):
+                print(f"⊘ Skipping: {filepath} (already has language suffix)")
+                skipped_count += 1
+                continue
+            
+            # Check if English translation already exists
+            en_version = path_obj.parent / (base_name + '.md')
+            if en_version.exists():
+                print(f"⊘ Skipping: {filepath} (English version already exists)")
+                skipped_count += 1
                 continue
             
             output_path, was_translated = process_file(filepath, api_key, endpoint)
@@ -212,6 +253,7 @@ def main():
     print(f"\n{'='*60}")
     print(f"Translation complete!")
     print(f"Successfully translated: {translated_count}")
+    print(f"Skipped (already has translation): {skipped_count}")
     print(f"Failed: {failed_count}")
     print(f"{'='*60}")
     

@@ -1,8 +1,9 @@
 ---
 title: "Testing the Auto-Translation Workflow"
-date: 2025-12-20T17:00:00Z
+date: 2025-12-20T18:00:00Z
 description: "A test article to verify the automatic translation workflow"
 tags: ["testing", "workflow", "automation"]
+draft: false
 ---
 
 ## Introduction
