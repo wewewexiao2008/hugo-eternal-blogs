@@ -139,39 +139,54 @@ git submodule update --init --recursive
 
 ## Custom Prompts
 
-### /transall - Translate Current Article
+### /transall - Translate All Untranslated Articles
 
-Translate an article locally with interactive review before committing.
+Automatically find and translate all articles that don't have translations yet.
 
 **Usage**:
 ```bash
-# 1. Write your article
-hugo new en/posts/my-article.md
-# Edit content/en/posts/my-article.md
+# Find all untranslated files and translate them one by one
+python scripts/translate_content.py
 
-# 2. Translate locally (with review)
-python scripts/translate_local.py content/en/posts/my-article.md
+# The script will:
+# 1. Scan content/en/posts/ for files without .zh-cn.md versions
+# 2. Scan content/zh-cn/posts/ for files without English versions
+# 3. Translate each missing file
+# 4. Create translated files in the correct location
 
-# Script will:
-# - Detect language automatically
-# - Call API to translate content
-# - Ask: "Is the translation OK? (y/n):"
-# - If yes: proceed to commit
-# - If no: prompt you to edit manually
+# After translation completes:
+git add content/
+git commit -m "Add translations for articles
 
-# 3. Commit both versions
-git add content/en/posts/my-article.md content/en/posts/my-article.zh-cn.md
-git commit -m "Add article: My Article
-
-Adds both English and Chinese versions."
+Translated X articles."
 git push origin main
 ```
 
+**Alternative - Single File**:
+```bash
+# Translate just one specific article
+python scripts/translate_local.py content/en/posts/my-article.md
+
+# Review the translation
+cat content/en/posts/my-article.zh-cn.md
+
+# If satisfied, commit
+git add content/en/posts/my-article.md content/en/posts/my-article.zh-cn.md
+git commit -m "Add article: My Article"
+git push origin main
+```
+
+**File Naming Convention**:
+- English (default): `article.md`
+- Chinese translation: `article.zh-cn.md`
+- Both files live in the same directory
+- Hugo automatically links them as translations
+
 **Benefits**:
-- ✅ Single API call per article (not on every push)
-- ✅ Immediate quality control and review
-- ✅ Edit before committing if needed
-- ✅ Both files committed together
+- ✅ Batch translate multiple articles at once
+- ✅ Only translates missing versions (won't overwrite)
+- ✅ Single API call per article
+- ✅ Commit all translations together
 - ✅ GitHub Actions only deploys (doesn't translate)
 
 **See Also**: `LOCAL_TRANSLATION.md` for detailed guide
