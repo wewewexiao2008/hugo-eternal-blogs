@@ -1,11 +1,11 @@
-name: Auto-translate Hugo content
+# This workflow has been disabled in favor of local translation
+# See LOCAL_TRANSLATION.md for the recommended workflow
+#
+# To re-enable, remove the line below:
+name: DISABLED-Auto-translate Hugo content
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'content/**/*.md'
+  # Disabled - use local translation instead
   workflow_dispatch:
 
 jobs:
