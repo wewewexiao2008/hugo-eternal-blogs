@@ -108,7 +108,7 @@ git submodule update --init --recursive
 - **Hugo Extended** v0.128.0 or compatible (Terminal theme requires SCSS support)
 ## Custom Prompts
 
-### /trans-check - Check & Translate Missing Files
+### trans-check~ - Check & Translate Missing Files
 
 Audit content directories for missing translations and fill gaps manually.
 
@@ -137,6 +137,6 @@ Audit content directories for missing translations and fill gaps manually.
    - Run `git push origin main`
 
 **Example Usage**:
-User: `/trans-check`
+User: `trans-check~`
 Agent: [Runs audit, reports missing files, translates, commits]
 
