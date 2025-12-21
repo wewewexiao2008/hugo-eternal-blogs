@@ -106,5 +106,37 @@ git submodule update --init --recursive
 ## Environment Requirements
 
 - **Hugo Extended** v0.128.0 or compatible (Terminal theme requires SCSS support)
-- **Git** with submodule support
+## Custom Prompts
+
+### /trans-check - Check & Translate Missing Files
+
+Audit content directories for missing translations and fill gaps manually.
+
+**Protocol**:
+
+1. **Tree & Audit**:
+   - Run `find content -name "*.md" -type f` to get full file list.
+   - Compare `content/en/` vs `content/zh-cn/` to identify missing pairs.
+   - Check if `article.md` exists but `article.zh-cn.md` (or vice-versa) is missing.
+
+2. **Report**:
+   - List all missing translation pairs (e.g., "Missing zh-cn for: content/en/posts/foo.md").
+   - If no missing files found, stop.
+   - If missing files found, ask user: "Should I translate these files?"
+
+3. **Translate & Create**:
+   - If user confirms:
+     - For each missing file:
+       - Read the source file (`read_files`).
+       - Translate content preserving frontmatter/markdown (En <-> Zh).
+       - Create the new file in the target directory (`create_file`).
+
+4. **Verify & Commit**:
+   - Ask user to verify created files.
+   - Run `git add .` and `git commit -m "Add missing translations"`
+   - Run `git push origin main`
+
+**Example Usage**:
+User: `/trans-check`
+Agent: [Runs audit, reports missing files, translates, commits]
 
