@@ -135,4 +135,43 @@ git submodule update --init --recursive
 - **Hugo Extended** v0.128.0 or compatible (Terminal theme requires SCSS support)
 - **Python** 3.11+ with `requests`, `python-frontmatter`, `langdetect`
 - **Git** with submodule support
-- **GitHub Secrets**: `GEMINI_API_KEY`, `GEMINI_ENDPOINT`
+- **Environment Variables** (local only): `GEMINI_API_KEY`, `GEMINI_ENDPOINT`
+
+## Custom Prompts
+
+### /transall - Translate Current Article
+
+Translate an article locally with interactive review before committing.
+
+**Usage**:
+```bash
+# 1. Write your article
+hugo new en/posts/my-article.md
+# Edit content/en/posts/my-article.md
+
+# 2. Translate locally (with review)
+python scripts/translate_local.py content/en/posts/my-article.md
+
+# Script will:
+# - Detect language automatically
+# - Call API to translate content
+# - Ask: "Is the translation OK? (y/n):"
+# - If yes: proceed to commit
+# - If no: prompt you to edit manually
+
+# 3. Commit both versions
+git add content/en/posts/my-article.md content/en/posts/my-article.zh-cn.md
+git commit -m "Add article: My Article
+
+Adds both English and Chinese versions."
+git push origin main
+```
+
+**Benefits**:
+- ✅ Single API call per article (not on every push)
+- ✅ Immediate quality control and review
+- ✅ Edit before committing if needed
+- ✅ Both files committed together
+- ✅ GitHub Actions only deploys (doesn't translate)
+
+**See Also**: `LOCAL_TRANSLATION.md` for detailed guide
