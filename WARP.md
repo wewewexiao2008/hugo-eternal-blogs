@@ -106,6 +106,56 @@ git submodule update --init --recursive
 ## Environment Requirements
 
 - **Hugo Extended** v0.128.0 or compatible (Terminal theme requires SCSS support)
+## Git Conventions
+
+### Commit Message Format
+
+```
+<title>
+
+<description>
+
+Co-Authored-By: Your name <...url>
+```
+
+**Title**:
+- First line, max 50 characters
+- Imperative mood ("Add", "Fix", "Update", "Remove")
+- Examples:
+  - `Add article: My Title`
+  - `Update config for language selector`
+  - `Fix typo in about page`
+  - `Add missing Chinese translation`
+
+**Description** (optional):
+- Separated from title by blank line
+- Explain what and why, not how
+- Wrap at 72 characters
+- Use bullet points for multiple changes
+
+**Co-Author**:
+- Always include: `Co-Authored-By: <Agent name>`
+- On a new line at the end
+
+### Examples
+
+```
+Add article: Building AI Apps
+
+Adds both English and Chinese versions of the article.
+
+Co-Authored-By: Warp <agent@warp.dev>
+```
+
+```
+Add missing translations
+
+- Add Chinese version of welcome.md
+- Add Chinese version of test-translation.md
+
+Co-Authored-By: Warp <agent@warp.dev>
+```
+
 ## Custom Prompts
 
 ### trans-check~ - Check & Translate Missing Files
