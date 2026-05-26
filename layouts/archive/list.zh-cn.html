@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="index-content">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}
+    {{ . }}
+  {{ end }}
+
+  {{/* Stats bar */}}
+  {{ $posts := where (where .Site.RegularPages "Type" "posts") "Lang" "zh-cn" }}
+  {{ $tags := .Site.Taxonomies.tags }}
+  {{ $postCount := len $posts }}
+  {{ $tagCount := len $tags }}
+  {{ $firstPost := index (sort (where .Site.RegularPages "Type" "posts") "Date" "asc") 0 }}
+  {{ $days := div (sub now.Unix $firstPost.Date.Unix) 86400 }}
+  <div class="post-content" style="margin-bottom: 2rem; padding: 1rem 1.5rem; border-left: 3px solid #ffcd00;">
+    <p style="margin:0; font-size: 0.95rem;">
+      📊 <strong>{{ $postCount }}</strong> 篇文章 &middot;
+      <strong>{{ $tagCount }}</strong> 个标签 &middot;
+      已运行 <strong>{{ $days }}</strong> 天
+    </p>
+  </div>
+
+  {{/* Series definitions */}}
+  {{ $series := dict
+    "jane-street" (dict "title" "如何进入 Jane Street" "icon" "🏢" "desc" "多期连载：概率、OCaml、系统思维、市场微结构、面试准备全攻略。")
+    "quant-trading" (dict "title" "量化交易" "icon" "📈" "desc" "从零开始的风险平价策略回测、模拟交易与 Walk-Forward 验证。")
+    "self-hosted" (dict "title" "自建基础设施" "icon" "🏠" "desc" "在 Mac mini 上部署运维 Gitea、n8n、Alist、Syncthing 与 Cloudflare Tunnel。")
+    "openclaw" (dict "title" "OpenClaw & Agent 工程" "icon" "🦞" "desc" "用 OpenClaw 构建：Skills、Heartbeat、记忆系统、飞书集成与 x-cmd Shell 武装。")
+  }}
+
+  {{ range $key, $s := $series }}
+    {{ $seriesPosts := where $posts "Params.series" $key }}
+    {{ if $seriesPosts }}
+    <h2>{{ $s.icon }} {{ $s.title }}</h2>
+    <p style="color: #888; margin-top: -0.5rem; margin-bottom: 1rem; font-size: 0.9rem;">{{ $s.desc }}</p>
+    <ul>
+      {{ range sort $seriesPosts "Date" "asc" }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        &nbsp;<time style="color: #666; font-size: 0.85rem;">{{ .Date.Format "2006-01-02" }}</time>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  {{ end }}
+
+  {{/* Uncategorized */}}
+  {{ $categorized := slice }}
+  {{ range $key, $_ := $series }}
+    {{ $sp := where $posts "Params.series" $key }}
+    {{ range $sp }}
+      {{ $categorized = $categorized | append .File.UniqueID }}
+    {{ end }}
+  {{ end }}
+  {{ $uncategorized := where $posts "File.UniqueID" "not in" $categorized }}
+  {{ if $uncategorized }}
+  <h2>📌 其他文章</h2>
+  <ul>
+    {{ range sort $uncategorized "Date" "desc" }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      &nbsp;<time style="color: #666; font-size: 0.85rem;">{{ .Date.Format "2006-01-02" }}</time>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+</div>
+{{ end }}

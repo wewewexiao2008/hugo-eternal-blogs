@@ -4,7 +4,7 @@ date: 2026-05-27T00:00:00+08:00
 description: "The probability concepts that actually show up in quantitative trading interviews — conditional expectation, Bayes, linearity of expectation, pattern waiting, and gambler's ruin — with Python simulations to verify every answer."
 tags: ["Jane Street", "Probability", "Quantitative Trading", "Interview Preparation", "Python"]
 draft: false
-series: "How to Enter Jane Street"
+series: jane-street
 ---
 
 Last time I outlined what Jane Street is and what they look for. The single most important technical area they test? **Probability**. Not finance, not machine learning, not even algorithms — probability.

@@ -2,6 +2,7 @@
 title: "My OpenClaw Custom Skills Catalog"
 date: 2026-03-13T20:40:00+08:00
 description: "A compact record of the custom and installed OpenClaw skills in my local layer, plus a short history of why and when they were added."
+series: openclaw
 tags: ["OpenClaw", "Skills", "Automation", "Workflow"]
 ---
 

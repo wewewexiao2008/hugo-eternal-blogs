@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="index-content">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}
+    {{ . }}
+  {{ end }}
+
+  {{/* Stats bar */}}
+  {{ $posts := where .Site.RegularPages "Type" "posts" }}
+  {{ $enPosts := where $posts "Lang" "en" }}
+  {{ $zhPosts := where $posts "Lang" "zh-cn" }}
+  {{ $tags := .Site.Taxonomies.tags }}
+  {{ $postCount := len $enPosts }}
+  {{ $tagCount := len $tags }}
+  {{ $firstPost := index (sort $enPosts "Date" "asc") 0 }}
+  {{ $days := div (sub now.Unix $firstPost.Date.Unix) 86400 }}
+  <div class="post-content" style="margin-bottom: 2rem; padding: 1rem 1.5rem; border-left: 3px solid #ffcd00;">
+    <p style="margin:0; font-size: 0.95rem;">
+      📊 <strong>{{ $postCount }}</strong> posts &middot;
+      <strong>{{ $tagCount }}</strong> tags &middot;
+      <strong>{{ $days }}</strong> days running
+    </p>
+  </div>
+
+  {{/* Series definitions */}}
+  {{ $series := dict
+    "jane-street" (dict "title" "How to Enter Jane Street" "icon" "🏢" "desc" "A multi-episode guide covering probability, OCaml, systems thinking, market microstructure, and interview prep.")
+    "quant-trading" (dict "title" "Quantitative Trading" "icon" "📈" "desc" "Risk Parity strategy backtesting, paper trading, and walk-forward validation from scratch.")
+    "self-hosted" (dict "title" "Self-Hosted Infrastructure" "icon" "🏠" "desc" "Deploying and operating Gitea, n8n, Alist, Syncthing, and Cloudflare Tunnels on a Mac mini.")
+    "openclaw" (dict "title" "OpenClaw & Agent Engineering" "icon" "🦞" "desc" "Building with OpenClaw: skills, heartbeats, memory, Feishu integration, and the x-cmd shell arsenal.")
+  }}
+
+  {{ range $key, $s := $series }}
+    {{ $seriesPosts := where $enPosts "Params.series" $key }}
+    {{ if $seriesPosts }}
+    <h2>{{ $s.icon }} {{ $s.title }}</h2>
+    <p style="color: #888; margin-top: -0.5rem; margin-bottom: 1rem; font-size: 0.9rem;">{{ $s.desc }}</p>
+    <ul>
+      {{ range sort $seriesPosts "Date" "asc" }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        &nbsp;<time style="color: #666; font-size: 0.85rem;">{{ .Date.Format "2006-01-02" }}</time>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  {{ end }}
+
+  {{/* Uncategorized posts */}}
+  {{ $categorized := slice }}
+  {{ range $key, $s := $series }}
+    {{ $sp := where $enPosts "Params.series" $key }}
+    {{ range $sp }}
+      {{ $categorized = $categorized | append .File.UniqueID }}
+    {{ end }}
+  {{ end }}
+  {{ $uncategorized := where $enPosts "File.UniqueID" "not in" $categorized }}
+  {{ if $uncategorized }}
+  <h2>📌 Other Posts</h2>
+  <ul>
+    {{ range sort $uncategorized "Date" "desc" }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      &nbsp;<time style="color: #666; font-size: 0.85rem;">{{ .Date.Format "2006-01-02" }}</time>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+</div>
+{{ end }}

@@ -4,7 +4,7 @@ date: 2026-05-27T00:00:00+08:00
 description: "量化交易面试中真正高频出现的概率概念——条件期望、贝叶斯、期望线性性、模式等待时间、赌徒破产——每个结论都用 Python 模拟验证。"
 tags: ["Jane Street", "概率论", "量化交易", "面试准备", "Python"]
 draft: false
-series: "How to Enter Jane Street"
+series: jane-street
 ---
 
 上一期我梳理了 Jane Street 是什么样的公司、他们找什么样的人。他们测试的最重要的技术领域是什么？**概率论**。不是金融，不是机器学习，甚至不是算法——是概率。

@@ -2,6 +2,7 @@
 title: "OpenClaw 记忆检索单独切到 AiHubMix Embeddings"
 date: 2026-03-13T19:40:00+08:00
 description: "把 OpenClaw 的 memorySearch 单独接到 AiHubMix embeddings，保持 chat provider 不变，并完成回写检索测试。"
+series: openclaw
 tags: ["OpenClaw", "AiHubMix", "Embeddings", "Memory Search"]
 ---
 

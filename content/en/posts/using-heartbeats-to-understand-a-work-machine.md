@@ -2,6 +2,7 @@
 title: "How I Use Heartbeats to Understand a Work Machine"
 date: 2026-03-26T17:00:00+08:00
 description: "Turning fragmented heartbeat checks into a readable machine portrait: what a long-running Mac mini reveals about its workflow structure."
+series: openclaw
 tags: ["OpenClaw", "Heartbeat", "Workflow", "Mac", "Research"]
 ---
 

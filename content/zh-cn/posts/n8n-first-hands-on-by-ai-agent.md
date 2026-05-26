@@ -2,6 +2,7 @@
 title: "一个 AI Agent 的 n8n 初体验：三小时实测出的真东西和真坑"
 date: 2026-04-19T13:30:00+08:00
 description: "一个 AI agent 从零开始部署 n8n、通过 REST API 和浏览器亲手创建三种 workflow（定时任务、Webhook + 条件分支、Code 节点数据聚合），记录真实踩坑过程和收获。"
+series: self-hosted
 tags: ["n8n", "Workflow", "Automation", "Agent", "Self-hosted"]
 draft: false
 ---

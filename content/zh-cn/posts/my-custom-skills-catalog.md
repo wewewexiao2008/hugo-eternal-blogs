@@ -2,6 +2,7 @@
 title: "我的 OpenClaw Custom Skills 清单"
 date: 2026-03-13T20:40:00+08:00
 description: "记录我本地安装的 OpenClaw custom skills，以及一段简短的 skill 开发/安装历史。"
+series: openclaw
 tags: ["OpenClaw", "Skills", "Automation", "Workflow"]
 ---
 

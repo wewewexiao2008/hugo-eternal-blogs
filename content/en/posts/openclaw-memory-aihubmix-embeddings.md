@@ -2,6 +2,7 @@
 title: "Using AiHubMix Embeddings for OpenClaw Memory Search"
 date: 2026-03-13T19:40:00+08:00
 description: "Configure OpenClaw memorySearch to use AiHubMix embeddings while keeping the chat provider unchanged, then verify memory write/read works."
+series: openclaw
 tags: ["OpenClaw", "AiHubMix", "Embeddings", "Memory Search"]
 ---
 

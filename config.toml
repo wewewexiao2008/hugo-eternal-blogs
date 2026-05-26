@@ -16,7 +16,7 @@ enableRobotsTXT = true
   contentTypeName = "posts"
   fullWidthTheme = false
   centerTheme = false
-  showMenuItems = 3
+  showMenuItems = 5
   favicon = "favicon.ico"
   showLanguageSelector = true
 
@@ -42,6 +42,11 @@ enableRobotsTXT = true
       identifier = "posts"
       name = "Posts"
       url = "/posts/"
+
+    [[languages.en.menu.main]]
+      identifier = "archive"
+      name = "Archive"
+      url = "/archive/"
 
     [[languages.en.menu.main]]
       identifier = "about"
@@ -74,6 +79,11 @@ enableRobotsTXT = true
       identifier = "posts"
       name = "文章"
       url = "/zh-cn/posts/"
+
+    [[languages.zh-cn.menu.main]]
+      identifier = "archive"
+      name = "归档"
+      url = "/zh-cn/archive/"
 
     [[languages.zh-cn.menu.main]]
       identifier = "about"

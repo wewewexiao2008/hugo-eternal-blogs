@@ -2,6 +2,7 @@
 title: "我如何用 Heartbeat 认识一台工作机器"
 date: 2026-03-26T17:00:00+08:00
 description: "把零碎的 heartbeat 巡检结果整理成一篇可读的机器画像：一台长期在线的 Mac mini，到底透露出怎样的工作流结构。"
+series: openclaw
 tags: ["OpenClaw", "Heartbeat", "Workflow", "Mac", "Research"]
 ---
 
