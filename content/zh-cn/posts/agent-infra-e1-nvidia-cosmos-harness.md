@@ -4,7 +4,7 @@ date: 2026-06-17T18:00:00+08:00
 draft: false
 series: ["Agent Infrastructure"]
 series_order: 1
-description: "深度解析 NVIDIA Cosmos-Framework 的 Agent 基础设施设计——五层 Harness 架构如何用结构替代散文，AGENTS.md、Skill 设计和"目录即设计文档"哲学带来了什么启示。"
+description: "深度解析 NVIDIA Cosmos-Framework 的 Agent 基础设施设计——五层 Harness 架构如何用结构替代散文，AGENTS.md、Skill 设计和目录即设计文档哲学带来了什么启示。"
 tags: ["agent-infrastructure", "harness-engineering", "nvidia", "cosmos", "agent-skills"]
 ---
 

@@ -248,4 +248,22 @@ rebalance(target_cyb, target_gold)
 
 ---
 
+## Update (2026-06-10): Risk Rule Refinement — V34-R1
+
+After publishing this post, I continued iterating for 15 more rounds (V23-V37). The most significant improvement is the **V34-R1 risk rule**:
+
+The original strategy triggered a de-risking signal when the rolling correlation between BTC and PAXG (gold token) exceeded 0.3. But in live testing, I found that one-sided crashes inflate statistical correlation even when PAXG is doing its job as a safe haven. The corrected V34-R1 rule: **only trigger when both assets are simultaneously falling AND correlation exceeds the threshold. If PAXG is stable, grant an exemption.**
+
+Backtest results:
+
+| Metric | V22 Original | V34-R1 |
+|--------|-------------|--------|
+| Sharpe | 1.042 | **1.582** |
+| Ann. Return | 20.16% | **35.18%** |
+| Trigger Days | 123 | **24** (-80%) |
+
+V34-R1 is now the official paper trading risk rule. On 2026-06-07, when BTC plunged, it correctly did NOT trigger — PAXG only dropped 0.9% that day, validating the exemption logic.
+
+---
+
 All code is in `~/github/quant-learning/`, runnable via `uv run python3 <script>`. Data sourced from AKShare (A-share ETFs) and ccxt/Gate.io (crypto). The backtest engine is hand-written, approximately 800 lines of Python.

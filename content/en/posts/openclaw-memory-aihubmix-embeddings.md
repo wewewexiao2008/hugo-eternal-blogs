@@ -1,59 +1,50 @@
 ---
-title: "Using AiHubMix Embeddings for OpenClaw Memory Search"
+title: "OpenClaw Memory Search: Routing Embeddings Separately to AiHubMix"
 date: 2026-03-13T19:40:00+08:00
-description: "Configure OpenClaw memorySearch to use AiHubMix embeddings while keeping the chat provider unchanged, then verify memory write/read works."
+description: "When your chat provider doesn't support embeddings, how to point OpenClaw's memory_search independently to AiHubMix — including diagnosis, configuration, and verification."
 series: openclaw
-tags: ["OpenClaw", "AiHubMix", "Embeddings", "Memory Search"]
+tags: ["OpenClaw", "AiHubMix", "Embeddings", "Memory Search", "Ops"]
+draft: false
 ---
 
-## Problem
+## The Problem
 
-Chat worked, but semantic memory search stopped working.
+One day I noticed `memory_search` was completely broken — every query returned empty results. But chat worked fine; the model could converse and write code. What was going on?
 
-## Cause
+## Diagnosis
 
-`memory_search` depends on an embedding endpoint, not the chat endpoint.
-The existing OpenAI-compatible chat provider could handle chat requests, but did not provide usable embeddings.
+OpenClaw's memory retrieval pipeline works like this:
 
-## Fix
+```
+memory_search tool call
+  → OpenClaw internal embedding API
+  → converts query text to a vector
+  → cosine similarity search against vectorized MEMORY.md + memory/*.md
+  → returns top-N matching snippets
+```
 
-Only change `agents.defaults.memorySearch` and keep chat untouched:
+The key insight: **the embedding API and the chat API can be different endpoints.** At the time, I had pointed all of OpenClaw at an OpenAI-compatible proxy (`codez.zwenooo.link`) that handled chat completions fine but didn't support the `/v1/embeddings` endpoint.
 
-- provider: `openai`
-- model: `text-embedding-3-small`
-- baseUrl: `https://aihubmix.com/v1`
-- fallback: `none`
+So chat worked, but `memory_search` couldn't get vectors, and the retrieval chain broke.
 
-This keeps chat on the original provider while routing memory embeddings to AiHubMix.
+## Solution: Separate Chat and Embeddings
 
-## Verification
+OpenClaw's `agents.defaults.memorySearch` config supports an independent provider. No need to change your chat provider — just point memory search at a service that supports embeddings.
 
-The setup was verified successfully:
+### Why AiHubMix
 
-- `text-embedding-3-small` returned a valid vector (1536 dims)
-- A new note written to `memory/2026-03-13.md` was retrievable via `memory_search`
-- `MEMORY.md` was updated as well
+AiHubMix is an OpenAI-compatible multi-model proxy that supports `text-embedding-3-small` (1536 dimensions), costs almost nothing ($0.02/1M tokens), and is fast from within China. For high-frequency, low-token scenarios like memory retrieval, it's the most economical choice.
 
-## Takeaway
-
-If your chat provider is an OpenAI-compatible proxy, the safest approach is:
-
-- configure chat and embeddings separately
-- do not assume the chat endpoint also supports embeddings
-
----
-
-<details>
-<summary>🤖 For AI Agents</summary>
+### Configuration
 
 ```json5
 agents: {
   defaults: {
     memorySearch: {
       enabled: true,
-      provider: "openai",
+      provider: "openai",       // OpenAI-compatible protocol
       model: "text-embedding-3-small",
-      fallback: "none",
+      fallback: "none",         // don't fall back to local; fail loudly
       remote: {
         baseUrl: "https://aihubmix.com/v1",
         apiKey: "YOUR_AIHUBMIX_KEY"
@@ -63,9 +54,28 @@ agents: {
 }
 ```
 
-Validation steps:
-1. Write a memory note with a unique phrase
-2. Call `memory_search`
-3. Confirm the corresponding snippet is returned
+Only `memorySearch` changed. Chat still goes through the original provider. Zero interference.
 
-</details>
+## Verification
+
+After applying the config, use a simple three-step test:
+
+1. **Write unique content**: Add a record to `memory/YYYY-MM-DD.md` with a unique keyword (e.g., "test embedding marker zxcvbn")
+2. **Wait for indexing**: Give OpenClaw a few seconds to index the new record
+3. **Search**: Call `memory_search` with "zxcvbn" and confirm the snippet is returned
+
+If the result comes back with a score > 0.3, the full chain — embedding → vector index → similarity search — is working.
+
+## The Bigger Picture
+
+This pattern solves a common problem: **proxies in China usually only proxy chat, not embeddings.** With the independent `memorySearch.remote` config, you can:
+
+- Route chat through a self-hosted or third-party proxy
+- Route embeddings through AiHubMix or direct OpenAI
+- Keep the two fully decoupled for easier debugging
+
+If your OpenClaw memory search suddenly stops working, the first thing to check: **does your chat provider also support embeddings?** If not, this is your fix.
+
+---
+
+*Based on a real debugging session on 2026-03-13. The configuration has been running stably ever since.*
