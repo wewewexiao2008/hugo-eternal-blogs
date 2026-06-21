@@ -12,6 +12,25 @@ enableRobotsTXT = true
 [markup.goldmark.renderer]
   unsafe = true
 
+# Related posts
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = true
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "series"
+    weight = 80
+  [[related.indices]]
+    name = "category"
+    weight = 40
+
+# RSS full text
+[outputs]
+  home = ["HTML", "RSS"]
+
 [params]
   contentTypeName = "posts"
   fullWidthTheme = false

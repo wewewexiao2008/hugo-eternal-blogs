@@ -1,4 +1,7 @@
 {{ define "main" }}
+<!-- Reading Progress Bar -->
+<div class="reading-progress" id="reading-progress"></div>
+
 <article class="post">
   <h1 class="post-title">
     <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
@@ -15,14 +18,10 @@
     {{- with .Params.Author -}}
       <span class="post-author">{{ . }}</span>
     {{- end -}}
-    {{- if and (.Param "readingTime") (eq (.Param "readingTime") true) -}}
-      <span class="post-reading-time">{{ .ReadingTime }} {{ $.Site.Params.minuteReadingTime | default "min read" }} ({{ .WordCount }} {{ $.Site.Params.words | default "words" }})</span>
-    {{- end -}}
-
-    <!-- Page views -->
+    <span class="post-reading-time">⏱️ {{ .ReadingTime }} min read ({{ .WordCount }} words)</span>
     {{ if not (.Params.hideViews | default false) }}
     <span class="post-views-inline">
-      &nbsp;·&nbsp;👁️ <span id="busuanzi_value_page_{{ .RelPermalink }}">...</span> views
+      &nbsp;·&nbsp;👁️ <span id="busuanzi_value_page_{{ .RelPermalink }}">…</span> views
     </span>
     {{ end }}
   </div>
@@ -57,6 +56,26 @@
     {{ partial "posts_pagination.html" . }}
   {{ end }}
 
+  <!-- Related Posts -->
+  {{ $related := .Site.RegularPages.Related . | first 3 }}
+  {{ if $related }}
+  <div class="related-posts">
+    <h2 class="section-heading">🔗 {{ i18n "relatedPosts" | default "Related Posts" }}</h2>
+    <div class="related-grid">
+      {{ range $related }}
+      <a href="{{ .RelPermalink }}" class="related-card">
+        <span class="related-date">{{ .Date.Format "2006-01-02" }}</span>
+        <span class="related-title">{{ .Title }}</span>
+        <span class="related-desc">{{ with .Description }}{{ . | truncate 80 }}{{ else }}{{ .Summary | truncate 80 }}{{ end }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
   {{ partial "comments.html" . }}
 </article>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 {{ end }}

@@ -1,0 +1,113 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Type" "posts" }}
+{{ $langPosts := where $posts "Lang" .Lang }}
+{{ $tags := .Site.Taxonomies.tags }}
+{{ $postCount := len $langPosts }}
+{{ $tagCount := len $tags }}
+{{ $firstPost := index (sort $langPosts "Date" "asc") 0 }}
+{{ $days := div (sub now.Unix $firstPost.Date.Unix) 86400 }}
+
+<!-- Hero -->
+<div class="hero-section">
+  {{ .Content }}
+</div>
+
+<!-- Stats Dashboard -->
+<div class="stats-dashboard">
+  <div class="stat-card">
+    <span class="stat-number">{{ $postCount }}</span>
+    <span class="stat-label">{{ i18n "posts" | default "Posts" }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">{{ $tagCount }}</span>
+    <span class="stat-label">{{ i18n "tags" | default "Tags" }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">{{ $days }}</span>
+    <span class="stat-label">{{ i18n "days" | default "Days" }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number busuanzi-value" id="busuanzi_value_site_pv">…</span>
+    <span class="stat-label">{{ i18n "views" | default "Views" }}</span>
+  </div>
+</div>
+
+<!-- Series Cards -->
+{{ $series := dict
+  "jane-street" (dict "title" "How to Enter Jane Street" "icon" "🏢" "desc" "Probability, OCaml, systems thinking, market microstructure, and interview prep.")
+  "quant-trading" (dict "title" "Quantitative Trading" "icon" "📈" "desc" "Risk Parity strategy backtesting, paper trading, and walk-forward validation.")
+  "self-hosted" (dict "title" "Self-Hosted Infrastructure" "icon" "🏠" "desc" "Gitea, n8n, Alist, Syncthing, and Cloudflare Tunnels on Mac mini.")
+  "agent-infrastructure" (dict "title" "Agent Infrastructure" "icon" "🤖" "desc" "Harness engineering, agent skills, coding agents, and Physical AI.")
+  "openclaw" (dict "title" "OpenClaw & Agent Engineering" "icon" "🦞" "desc" "Skills, heartbeats, memory, Feishu integration, and the x-cmd arsenal.")
+}}
+
+<div class="series-grid">
+  {{ range $key, $s := $series }}
+    {{ $seriesPosts := where $langPosts "Params.series" $key }}
+    {{ if $seriesPosts }}
+    {{ $count := len $seriesPosts }}
+    <a href="{{ relLangURL (printf "archive/") }}#{{ $key }}" class="series-card">
+      <div class="series-card-header">
+        <span class="series-icon">{{ $s.icon }}</span>
+        <span class="series-title">{{ $s.title }}</span>
+        <span class="series-count">{{ $count }}</span>
+      </div>
+      <p class="series-desc">{{ $s.desc }}</p>
+    </a>
+    {{ end }}
+  {{ end }}
+</div>
+
+<!-- Latest Posts -->
+<h2 class="section-heading">📰 {{ i18n "latestPosts" | default "Latest Posts" }}</h2>
+<div class="posts">
+  {{ $paginator := .Paginate $langPosts 5 }}
+  {{ range $paginator.Pages }}
+    <article class="post on-list">
+      <h2 class="post-title">
+        <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+      </h2>
+      <div class="post-meta">
+        <time class="post-date">{{ partial "post-date" . }}</time>
+        {{ if not (.Params.hideViews | default false) }}
+        <span class="post-views-inline">&nbsp;·&nbsp;👁️ <span id="busuanzi_value_page_{{ .RelPermalink }}">…</span></span>
+        {{ end }}
+      </div>
+      {{ if .Params.tags }}
+        <span class="post-tags">
+          {{ range .Params.tags }}
+          #<a href="{{ (urlize (printf "tags/%s/" .)) | absLangURL }}">{{ . }}</a>&nbsp;
+          {{ end }}
+        </span>
+      {{ end }}
+      <div class="post-content">
+        {{ if .Params.showFullContent }}
+          {{ .Content }}
+        {{ else if .Description }}
+          <p>{{ .Description | markdownify }}</p>
+        {{ else }}
+          {{ .Summary }}
+        {{ end }}
+      </div>
+      {{ if not .Params.showFullContent }}
+        <div>
+          <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ i18n "readMore" | default "Read more" }}]</a>
+        </div>
+      {{ end }}
+    </article>
+  {{ end }}
+  {{ partial "pagination.html" . }}
+</div>
+
+<!-- Tag Cloud -->
+{{ if $tags }}
+<div class="tag-cloud">
+  <h2 class="section-heading">🏷️ {{ i18n "tags" | default "Tags" }}</h2>
+  <div class="tag-cloud-list">
+    {{ range $name, $taxonomy := $tags }}
+    <a href="{{ (printf "tags/%s/" ($name | urlize)) | absLangURL }}" class="tag-cloud-item">{{ $name }} <span class="tag-count">{{ len $taxonomy.Pages }}</span></a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+{{ end }}
