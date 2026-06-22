@@ -69,9 +69,7 @@
       </h2>
       <div class="post-meta">
         <time class="post-date">{{ partial "post-date" . }}</time>
-        {{ if not (.Params.hideViews | default false) }}
-        <span class="post-views-inline">&nbsp;·&nbsp;👁️ <span id="busuanzi_value_page_{{ .RelPermalink }}">…</span></span>
-        {{ end }}
+        {{/* Per-page views only on single post pages, not on listing */}}
       </div>
       {{ if .Params.tags }}
         <span class="post-tags">
