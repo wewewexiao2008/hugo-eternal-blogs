@@ -1,7 +1,7 @@
 ---
 title: "Agent Infrastructure E3：代码即 Agent Harness——从一次性输出到运行时基础设施"
 date: 2026-07-01T08:00:00+08:00
-draft: true
+draft: false
 series: ["Agent Infrastructure"]
 series_order: 3
 description: "Agent 系统中的代码不再只是最终产物——它是驱动推理、行动和自我改进的运行时基础设施。本文深入解读 42 作者综述论文的框架，以及有治理的运行时演化机制。"

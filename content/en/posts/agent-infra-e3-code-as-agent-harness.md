@@ -1,7 +1,7 @@
 ---
 title: "Agent Infrastructure E3: Code as Agent Harness — From Disposable Output to Runtime Infrastructure"
 date: 2026-07-01T08:00:00+08:00
-draft: true
+draft: false
 series: ["Agent Infrastructure"]
 series_order: 3
 description: "Code in agent systems is no longer just the final product — it's the operational substrate that enables reasoning, action, and self-improvement. This post dives into the 42-author survey's framework and the case for governed runtime evolution."
