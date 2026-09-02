@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E9: Consolidation Week — When Agent Infrastructure Grew Up"
 date: 2026-08-05T12:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 9
 description: "In the last week of July 2026, agent infrastructure crossed three thresholds simultaneously: MCP went GA, five harness engineering papers landed on arXiv in a single day, and YC open-sourced a multiplayer agent harness. This is the story of the week the field stopped emerging and started consolidating — what's settled, what's still in flux, and what it means for anyone building on agent infrastructure."
 tags: ["agent-infrastructure", "harness-engineering", "mcp", "agent-security", "multiplayer-agents"]

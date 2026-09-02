@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E4：Agent Skills 实战——OpenClaw 与 NVIDIA Cosmos 技能生态对比"
 date: 2026-07-01T21:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 4
 description: "什么让一个 Agent Skill 成为 Skill？本文解构 OpenClaw 和 NVIDIA Cosmos-Framework 的技能格式，提取反复出现的设计模式，并映射 Agent 能力可移植性的收敛标准。"
 tags: ["agent-infrastructure", "agent-skills", "openclaw", "nvidia-cosmos", "design-patterns"]

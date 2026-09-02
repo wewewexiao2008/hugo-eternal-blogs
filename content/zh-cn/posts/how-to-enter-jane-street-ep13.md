@@ -5,6 +5,7 @@ description: "系列最后一期。Jane Street 到底在筛什么、六条入口
 tags: ["Jane Street", "申请攻略", "面试", "简历", "量化", "求职"]
 draft: false
 series: jane-street
+series_order: 13
 ---
 
 十三期前，我从一个问题开始：为什么一家交易公司用 OCaml 写所有东西？（[第1期](how-to-enter-jane-street-ep1.md)）十二期过去，桌上摆满了零件：概率、费米估算、市场微结构、系统设计、OCaml、编程题、ML 陷阱、一台审计过账目的交易模拟器。这一期是最后一期，处理唯一剩下的问题：怎么把你自己送进那扇门。

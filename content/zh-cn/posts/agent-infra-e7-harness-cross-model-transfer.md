@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E7：Harness 跨模型迁移——你的脚手架能换引擎吗？"
 date: 2026-07-26T15:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 7
 description: "Harness 工程的终极价值主张是模型无关的可迁移性：设计一次脚手架，换掉底层模型，还能继续用。本文用六组证据检验这个主张——从 Databricks 成本基准到信念分歧研究——结论是：结构能迁移，文案不能，弱模型受益更多。"
 tags: ["agent-infrastructure", "harness-engineering", "cross-model", "model-agnostic"]

@@ -5,6 +5,7 @@ description: "The capstone of the series: wiring market data, signals, risk sizi
 tags: ["Jane Street", "Trading Simulator", "Backtesting", "Kelly Criterion", "Market Impact", "Risk Management", "Quant"]
 draft: false
 series: jane-street
+series_order: 12
 ---
 
 Eleven episodes in, I've collected the pieces: order books and microstructure ([Ep.6](how-to-enter-jane-street-ep6.md)), probability and Kelly-style thinking ([Ep.2](how-to-enter-jane-street-ep2.md)), systems thinking ([Ep.4](how-to-enter-jane-street-ep4.md)), ML hazards at trading scale ([Ep.8](how-to-enter-jane-street-ep8.md)), coding patterns with a quant twist ([Ep.9](how-to-enter-jane-street-ep9.md)).

@@ -5,6 +5,7 @@ description: "Why understanding latency hierarchies, concurrency models, cache-f
 tags: ["Jane Street", "Systems Design", "Low Latency", "Concurrency", "Data Structures", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 4
 ---
 
 Last episode I went deep on OCaml. This time the lens widens: even if you write perfect OCaml, your strategy is worthless if the system around it can't deliver trades fast enough, reliably enough, or at all. Jane Street expects *everyone* — not just the engineers — to reason about systems. Their interviews reflect this. So let's talk about systems thinking for traders.

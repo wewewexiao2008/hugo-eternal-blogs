@@ -39,6 +39,11 @@ enableRobotsTXT = true
   favicon = "favicon.ico"
   showLanguageSelector = true
 
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
 [languages]
   [languages.en]
     languageName = "English"
@@ -61,6 +66,11 @@ enableRobotsTXT = true
       identifier = "posts"
       name = "Posts"
       url = "/posts/"
+
+    [[languages.en.menu.main]]
+      identifier = "series"
+      name = "Series"
+      url = "/series/"
 
     [[languages.en.menu.main]]
       identifier = "archive"
@@ -98,6 +108,11 @@ enableRobotsTXT = true
       identifier = "posts"
       name = "文章"
       url = "/zh-cn/posts/"
+
+    [[languages.zh-cn.menu.main]]
+      identifier = "series"
+      name = "系列"
+      url = "/zh-cn/series/"
 
     [[languages.zh-cn.menu.main]]
       identifier = "archive"

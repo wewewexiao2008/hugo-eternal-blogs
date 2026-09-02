@@ -5,6 +5,7 @@ description: "Jane Street interviews don't feel like LeetCode grinds. They feel 
 tags: ["Jane Street", "Coding Interview", "Algorithms", "Data Structures", "Quant Interview", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 9
 ---
 
 I've done my share of LeetCode. The patterns become familiar after a few hundred problems: two pointers, sliding window, dynamic programming, topological sort. You memorize the templates, recognize the signals, and fire off the solution. FAANG interviews reward this.

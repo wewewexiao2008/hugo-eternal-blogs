@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E2: Harness Engineering — 从博客文章到学术子领域的四个月"
 date: 2026-06-21T07:30:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 2
 description: "2026 年 2 月 OpenAI 提出 Harness Engineering，到 6 月已有 42 位作者的综述论文将其确立为研究子领域。本文追踪这一概念的学术爆发路径，并为从业者提炼可操作的实践指南。"
 tags: ["agent-infrastructure", "harness-engineering", "research", "ahe", "agent-skills"]

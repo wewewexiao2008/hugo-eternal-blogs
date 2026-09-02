@@ -5,6 +5,7 @@ description: "A strategy with backtest Sharpe 3.0 can shrink to 0.5 in live trad
 tags: ["Jane Street", "Market Microstructure", "Market Making", "Liquidity", "Order Book", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 6
 ---
 
 I covered probability in Ep.2, OCaml in Ep.3, systems thinking in Ep.4. But none of that prepared me for the most sobering question in quantitative trading: why does a strategy with backtest Sharpe 3.0 shrink to 0.5 in live trading?

@@ -5,6 +5,7 @@ description: "Image classification hits 99% accuracy easily. Financial predictio
 tags: ["Jane Street", "Machine Learning", "Quantitative Trading", "Kaggle", "Overfitting", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 8
 ---
 
 Training a ResNet to classify cats and dogs casually gets you above 95% accuracy. Apply the same methodology to financial prediction, and 51% starts feeling like climbing a mountain.

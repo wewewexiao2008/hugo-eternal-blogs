@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E5: The Coding Agent Platform Stack — When Harness Engineering Met Platform Engineering"
 date: 2026-07-15T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 5
 description: "In 2026 H1, coding agents went from personal CLI tools to team-level platform infrastructure. A clear four-layer stack is emerging: Harness Adapter, Execution Sandbox, Team Context Layer, and Output Pipeline. This post deconstructs each layer, maps real products to the architecture, and extracts what it means for practitioners."
 tags: ["agent-infrastructure", "coding-agent", "platform-engineering", "harness-engineering", "multi-agent"]

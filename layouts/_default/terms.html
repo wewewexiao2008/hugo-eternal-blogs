@@ -1,0 +1,58 @@
+{{ define "main" }}
+{{ if and (eq .Kind "taxonomy") (eq .Data.Singular "series") }}
+  {{ $isZH := eq .Language.Lang "zh-cn" }}
+  <style>
+    .series-index-list{margin-top:1.4em}
+    .series-index-item{display:block;padding:.8em 1em;margin:0 0 .7em;border:1px solid rgba(128,128,128,.3);border-radius:.4em;text-decoration:none}
+    .series-index-item:hover{border-color:currentColor}
+    .series-index-title{font-size:1.08em;font-weight:600}
+    .series-index-desc{font-size:.84em;opacity:.72;margin:.25em 0 0}
+    .series-badge{display:inline-block;margin-left:.6em;padding:.05em .6em;border:1px solid currentColor;border-radius:1em;font-size:.72em;font-weight:400;vertical-align:middle;opacity:.85;letter-spacing:.03em}
+    .series-badge.done{color:#4f8cc9}
+    .series-badge.ongoing{color:#b58900}
+  </style>
+  <div class="terms">
+    <h1>{{ if $isZH }}系列{{ else }}Series{{ end }}</h1>
+    {{ with .Content }}
+      <div class="index-content">{{ . }}</div>
+    {{ end }}
+    <div class="series-index-list">
+      {{ range .Data.Terms.ByCount }}
+        {{ $term := . }}
+        {{ with $.Site.GetPage (printf "/series/%s" .Name) }}
+          {{ $completed := false }}
+          {{ with .Params.completed }}{{ if . }}{{ $completed = true }}{{ end }}{{ end }}
+          <a class="series-index-item" href="{{ .RelPermalink }}">
+            <span class="series-index-title">{{ .Title }}
+              {{ if $completed }}<span class="series-badge done">✔ {{ if $isZH }}完结{{ else }}Completed{{ end }}</span>{{ else }}<span class="series-badge ongoing">⏳ {{ if $isZH }}连载中{{ else }}Ongoing{{ end }}</span>{{ end }}
+              <span style="opacity:.6;font-size:.8em;margin-left:.5em">{{ $term.Count }} {{ if $isZH }}篇{{ else }}posts{{ end }}</span>
+            </span>
+            <p class="series-index-desc">{{ with .Params.description }}{{ . | truncate 130 }}{{ end }}</p>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ else }}
+  <div class="terms">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="index-content">
+        {{ . }}
+      </div>
+    {{ end }}
+    <ul>
+      {{ $type := .Type }}
+      {{ range $key, $value := .Data.Terms.Alphabetical }}
+        {{ $name := .Name }}
+        {{ $count := .Count }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+          <li>
+            <a class="terms-title" href="{{ .Permalink }}">{{ .Name }} [{{ $count }}]</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+{{ end }}

@@ -5,6 +5,7 @@ description: "图像分类能做到 99% 准确率，为什么金融预测连 51%
 tags: ["Jane Street", "机器学习", "量化交易", "Kaggle", "过拟合", "面试准备"]
 draft: false
 series: jane-street
+series_order: 8
 ---
 
 训练一个 ResNet 分类猫狗，随便跑跑就能到 95% 以上准确率。拿同样的方法论去做金融预测，你会发现 51% 的准确率都像在爬山。

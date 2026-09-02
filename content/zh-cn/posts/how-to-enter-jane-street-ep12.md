@@ -5,6 +5,7 @@ description: "系列收官之作（倒数第二期）：把行情数据、信号
 tags: ["Jane Street", "交易模拟器", "回测", "凯利准则", "市场冲击", "风险管理", "量化"]
 draft: false
 series: jane-street
+series_order: 12
 ---
 
 写到这里已经十一期了，零件都凑齐了：订单簿和市场微结构（[第6期](how-to-enter-jane-street-ep6.md)）、概率和凯利式思维（[第2期](how-to-enter-jane-street-ep2.md)）、系统思维（[第4期](how-to-enter-jane-street-ep4.md)）、交易规模的 ML 陷阱（[第8期](how-to-enter-jane-street-ep8.md)）、带量化味道的编程题（[第9期](how-to-enter-jane-street-ep9.md)）。

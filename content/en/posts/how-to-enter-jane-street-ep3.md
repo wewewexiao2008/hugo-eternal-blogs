@@ -5,6 +5,7 @@ description: "Why a proprietary trading firm runs millions of lines of a languag
 tags: ["Jane Street", "OCaml", "Functional Programming", "Type Systems", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 3
 ---
 
 In the last two episodes I covered what Jane Street is and the probability foundations they test. Now let's talk about the elephant in the room: **OCaml**. Jane Street has written millions of lines of it. Their entire trading stack — from strategies to FPGA tooling — is OCaml. If you want to work there, you need to understand this language, not because they expect you to be an expert on day one, but because it shapes how they think.

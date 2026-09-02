@@ -1,0 +1,55 @@
+{{- with .Params.series -}}
+{{- $isZH := eq $.Language.Lang "zh-cn" -}}
+{{- $siblings := where $.Site.RegularPages "Params.series" $.Params.series -}}
+{{- if gt (len $siblings) 1 -}}
+{{- $hasOrder := false -}}
+{{- range first 1 $siblings -}}
+  {{- if .Params.series_order -}}{{- $hasOrder = true -}}{{- end -}}
+{{- end -}}
+{{- if $hasOrder -}}
+  {{- $siblings = $siblings.ByParam "series_order" -}}
+{{- else -}}
+  {{- $siblings = $siblings.ByDate -}}
+{{- end -}}
+{{- $idx := -1 -}}
+{{- range $i, $p := $siblings -}}
+  {{- if eq $p.RelPermalink $.RelPermalink -}}{{- $idx = $i -}}{{- end -}}
+{{- end -}}
+{{- if ge $idx 0 -}}
+{{- $seriesPage := false -}}
+{{- with $.Site.GetPage (printf "/series/%s" $.Params.series) -}}{{- $seriesPage = . -}}{{- end -}}
+{{- $prevP := false -}}
+{{- $nextP := false -}}
+{{- if gt $idx 0 -}}{{- $prevP = index $siblings (sub $idx 1) -}}{{- end -}}
+{{- if lt $idx (sub (len $siblings) 1) -}}{{- $nextP = index $siblings (add $idx 1) -}}{{- end -}}
+<style>
+  .series-nav{margin:1.8em 0 0;padding:.9em 1.1em;border:1px solid rgba(128,128,128,.3);border-radius:.4em;font-size:.9em}
+  .series-nav-head{opacity:.75;margin-bottom:.4em}
+  .series-nav-head a{font-weight:600}
+  .series-nav-links{display:flex;justify-content:space-between;gap:1em;flex-wrap:wrap}
+  .series-nav-links a{text-decoration:none}
+  .series-nav-links .nav-next{margin-left:auto;text-align:right}
+  .series-nav-links .nav-placeholder{visibility:hidden}
+</style>
+<div class="series-nav">
+  <div class="series-nav-head">
+    {{ if $isZH }}系列{{ else }}Series{{ end }}:
+    {{ if $seriesPage }}<a href="{{ $seriesPage.RelPermalink }}">{{ $seriesPage.Title }}</a>{{ else }}{{ $.Params.series }}{{ end }}
+    &nbsp;·&nbsp;{{ if $isZH }}第 {{ add $idx 1 }} / {{ len $siblings }} 篇{{ else }}Part {{ add $idx 1 }} of {{ len $siblings }}{{ end }}
+  </div>
+  <div class="series-nav-links">
+    {{ if $prevP }}
+      <a class="nav-prev" href="{{ $prevP.RelPermalink }}">← {{ if $isZH }}上一篇{{ else }}Previous{{ end }}: {{ $prevP.Title | truncate 42 }}</a>
+    {{ else }}
+      <span class="nav-placeholder">–</span>
+    {{ end }}
+    {{ if $nextP }}
+      <a class="nav-next" href="{{ $nextP.RelPermalink }}">{{ if $isZH }}下一篇{{ else }}Next{{ end }}: {{ $nextP.Title | truncate 42 }} →</a>
+    {{ else }}
+      <span class="nav-next" style="opacity:.7">{{ if $isZH }}（已是最新一篇）{{ else }}(latest entry){{ end }}</span>
+    {{ end }}
+  </div>
+</div>
+{{- end -}}
+{{- end -}}
+{{- end -}}

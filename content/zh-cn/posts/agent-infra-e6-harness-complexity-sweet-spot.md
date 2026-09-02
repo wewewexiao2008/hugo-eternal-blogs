@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E6：Harness 复杂度甜点——为什么越多不一定越好"
 date: 2026-07-21T06:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 6
 description: "Harness 复杂度与 agent 性能之间存在非单调关系。太少导致脚手架坍塌，太多制造协调开销。本文综合四篇关键论文，构建三维甜点框架：模型大小、任务难度，以及确定性-灵活性光谱。"
 tags: ["agent-infrastructure", "harness-engineering", "inference-time-compute", "slm", "optimization"]

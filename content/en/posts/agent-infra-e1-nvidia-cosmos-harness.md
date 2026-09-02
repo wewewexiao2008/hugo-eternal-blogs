@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E1: NVIDIA Cosmos-Framework as Harness Engineering Showcase"
 date: 2026-06-17T18:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 1
 description: "A deep dive into NVIDIA's Cosmos-Framework — how industrial-grade agent harnessing looks when 5 layers of structure replace prose, and what we can learn from their AGENTS.md, skill design, and architecture-as-design-doc philosophy."
 tags: ["agent-infrastructure", "harness-engineering", "nvidia", "cosmos", "agent-skills"]

@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E4: Agent Skills in Practice — Comparing OpenClaw and NVIDIA Cosmos Skill Ecosystems"
 date: 2026-07-01T21:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 4
 description: "What makes an agent skill a skill? This post deconstructs the skill formats used by OpenClaw and NVIDIA Cosmos-Framework, extracts recurring design patterns, and maps the converging standard for portable agent capabilities."
 tags: ["agent-infrastructure", "agent-skills", "openclaw", "nvidia-cosmos", "design-patterns"]

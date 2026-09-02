@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E8: Altimate Code — When Harness Engineering Becomes a Product"
 date: 2026-08-01T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 8
 description: "Harness engineering spent 2026 H1 becoming an academic sub-discipline. Then someone shipped a product. This is the story of Altimate Code — an open-source data engineering harness that forked OpenCode, layered compiled deterministic tools on top of any LLM, and proved that cheaper model + compiled harness beats expensive model without one."
 tags: ["agent-infrastructure", "harness-engineering", "altimate-code", "data-engineering", "deterministic-tools"]

@@ -5,6 +5,7 @@ description: "How many piano tuners are in Chicago? How much power does Bitcoin 
 tags: ["Jane Street", "Fermi Problems", "Estimation", "Superforecasting", "Quant Interview", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 7
 ---
 
 "How many piano tuners are in Chicago?"

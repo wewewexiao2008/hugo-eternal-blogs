@@ -5,6 +5,7 @@ description: "为什么一家自营交易公司用大多数开发者从未接触
 tags: ["Jane Street", "OCaml", "函数式编程", "类型系统", "面试准备"]
 draft: false
 series: jane-street
+series_order: 3
 ---
 
 前两期我分别介绍了 Jane Street 是什么样的公司，以及他们面试中高频考察的概率基础。这次来聊房间里的大象：**OCaml**。Jane Street 用这门语言写了数百万行代码，整个交易技术栈——从策略到 FPGA 工具链——都是 OCaml。如果你想去那里工作，你需要理解这门语言，不是因为他们期望你第一天就是专家，而是因为它塑造了他们的思维方式。

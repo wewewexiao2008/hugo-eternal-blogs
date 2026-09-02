@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E2: Harness Engineering — From Blog Post to Academic Subfield in 4 Months"
 date: 2026-06-21T07:30:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 2
 description: "In February 2026, OpenAI coined 'Harness Engineering.' By June, a 42-author survey had established it as a research subfield. This post traces the concept's explosive academic trajectory and what it means for anyone building agent systems."
 tags: ["agent-infrastructure", "harness-engineering", "research", "ahe", "agent-skills"]

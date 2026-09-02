@@ -5,6 +5,7 @@ description: "The probability concepts that actually show up in quantitative tra
 tags: ["Jane Street", "Probability", "Quantitative Trading", "Interview Preparation", "Python"]
 draft: false
 series: jane-street
+series_order: 2
 ---
 
 Last time I outlined what Jane Street is and what they look for. The single most important technical area they test? **Probability**. Not finance, not machine learning, not even algorithms — probability.

@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E7: Harness Cross-Model Transfer — Does Your Scaffold Travel?"
 date: 2026-07-26T15:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 7
 description: "The ultimate promise of harness engineering is model-agnostic transferability: design once, swap models, keep the scaffold. This post tests that claim against six evidence sets — from Databricks cost benchmarks to belief divergence research — and finds that structure travels, prose doesn't, and weaker models benefit more."
 tags: ["agent-infrastructure", "harness-engineering", "cross-model", "model-agnostic"]

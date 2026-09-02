@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E9：整合之周——Agent 基础设施成年礼"
 date: 2026-08-05T12:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 9
 description: "2026 年 7 月最后一周，agent 基础设施同时跨过了三个门槛：MCP 发布 GA 稳定版，五篇 harness 工程论文同日登陆 arXiv，YC 开源了多人协作 agent harness。这是这个领域从「涌现」走向「整合」的故事——什么是已定的、什么是未定的、对每个在 agent 基础设施上建造的人意味着什么。"
 tags: ["agent-infrastructure", "harness-engineering", "mcp", "agent-security", "multiplayer-agents"]

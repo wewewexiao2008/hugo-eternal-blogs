@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E6: The Harness Complexity Sweet Spot — Why More Isn't Always Better"
 date: 2026-07-21T06:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 6
 description: "Harness complexity has a non-monotonic relationship with agent performance. Too little causes scaffold collapse; too much creates coordination overhead. This post synthesizes four key papers to map the three-dimensional sweet spot framework: model size, task difficulty, and the determinism-flexibility spectrum."
 tags: ["agent-infrastructure", "harness-engineering", "inference-time-compute", "slm", "optimization"]

@@ -5,6 +5,7 @@ description: "Jane Street's monthly puzzles are legendary. This episode breaks d
 tags: ["Jane Street", "Puzzles", "Probability", "Information Theory", "Hamming Codes", "Interview Preparation"]
 draft: false
 series: jane-street
+series_order: 5
 ---
 
 If you've spent any time on Jane Street's website, you've probably found their [puzzles page](https://www.janestreet.com/puzzles/). Every month or two, they post a new problem. Sometimes it's a number theory question. Sometimes it's a combinatorial game. Sometimes it doesn't even have clearly defined rules — and *that's* the point.

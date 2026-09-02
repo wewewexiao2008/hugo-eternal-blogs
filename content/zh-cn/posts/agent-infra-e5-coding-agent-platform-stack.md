@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E5：Coding Agent 平台栈——当 Harness Engineering 遇到平台工程"
 date: 2026-07-15T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 5
 description: "2026 上半年，Coding Agent 从个人 CLI 工具跃迁为团队级平台基础设施。一个清晰的四层架构正在涌现：Harness 适配层、执行沙箱层、团队上下文层、输出管线层。本文逐层拆解，将真实产品映射到架构上，并提取对实践者的启示。"
 tags: ["agent-infrastructure", "coding-agent", "platform-engineering", "harness-engineering", "multi-agent"]

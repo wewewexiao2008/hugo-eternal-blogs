@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E10: A Constitution, a Contract, and a Scalpel"
 date: 2026-08-15T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 10
 description: "Two weeks after Consolidation Week, three papers landed that are qualitatively different from everything before: a 19-author survey giving harness engineering its own taxonomy (ETCLOVG), an enterprise study where code-owned enforcement scored 120/120 while prompt-only instructions failed, and HarnessFix, which treats failed trajectories as structured diagnostic evidence. This is what a discipline looks like when it stops emerging and starts institutionalizing."
 tags: ["agent-infrastructure", "harness-engineering", "etclovg", "agent-safety", "observability"]

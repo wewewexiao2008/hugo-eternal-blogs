@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{ if and (eq .Kind "term") (eq .Data.Singular "series") }}
+  {{ $isZH := eq .Language.Lang "zh-cn" }}
+  {{ $total := len .Data.Pages }}
+  {{ $pages := .Data.Pages }}
+  {{ $hasOrder := false }}
+  {{ range first 1 $pages }}{{ if .Params.series_order }}{{ $hasOrder = true }}{{ end }}{{ end }}
+  {{ if $hasOrder }}{{ $pages = .Data.Pages.ByParam "series_order" }}{{ else }}{{ $pages = .Data.Pages.ByDate }}{{ end }}
+  <style>
+    .series-badge{display:inline-block;margin-left:.6em;padding:.05em .6em;border:1px solid currentColor;border-radius:1em;font-size:.72em;font-weight:400;vertical-align:middle;opacity:.85;letter-spacing:.03em}
+    .series-badge.done{color:#4f8cc9}
+    .series-badge.ongoing{color:#b58900}
+    .series-list{margin-top:1.4em}
+    .series-entry{display:flex;gap:1em;align-items:baseline;padding:.55em 0;margin:0;border-bottom:1px dashed rgba(128,128,128,.28)}
+    .series-entry:last-child{border-bottom:none}
+    .series-num{font-family:var(--font-mono,monospace);opacity:.55;font-size:.95em;min-width:2.2em}
+    .series-entry-body{flex:1}
+    .series-entry-title{margin:0;font-size:1.02em}
+    .series-entry-title a{text-decoration:none}
+    .series-entry-date{font-size:.78em;opacity:.6;margin-left:.7em}
+    .series-entry-desc{font-size:.85em;opacity:.75;margin:.15em 0 0}
+  </style>
+  <h1 class="series-term-title">{{ .Title }}
+    {{ with .Params.completed }}{{ if . }}<span class="series-badge done">✔ {{ if $isZH }}完结{{ else }}Completed{{ end }} · {{ $total }} {{ if $isZH }}篇{{ else }}posts{{ end }}</span>{{ else }}<span class="series-badge ongoing">⏳ {{ if $isZH }}连载中{{ else }}Ongoing{{ end }} · {{ $total }} {{ if $isZH }}篇{{ else }}posts{{ end }}</span>{{ end }}{{ else }}<span class="series-badge ongoing">⏳ {{ if $isZH }}连载中{{ else }}Ongoing{{ end }} · {{ $total }} {{ if $isZH }}篇{{ else }}posts{{ end }}</span>{{ end }}
+  </h1>
+  {{ with .Content }}
+    <div class="index-content series-intro">{{ . }}</div>
+  {{ end }}
+  <div class="posts series-list" style="display:block">
+    {{ range $i, $p := $pages }}
+      {{ $num := add $i 1 }}
+      {{ if $p.Params.series_order }}{{ $num = int $p.Params.series_order }}{{ end }}
+      <div class="series-entry">
+        <span class="series-num">{{ printf "%02d" $num }}</span>
+        <div class="series-entry-body">
+          <h2 class="series-entry-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a><span class="series-entry-date">{{ $p.Date.Format "2006-01-02" }}</span></h2>
+          {{ with $p.Description }}<p class="series-entry-desc">{{ . | truncate 150 }}</p>{{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{ else }}
+  <h1>Posts for: #{{ .Title }}</h1>
+  {{ with .Content }}
+    <div class="index-content">
+      {{ . }}
+    </div>
+  {{ end }}
+  <div class="posts">
+    {{ range .Paginator.Pages }}
+      <article class="post on-list">
+        <h1 class="post-title">
+          <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+        </h1>
+        <div class="post-meta">
+          {{- if .Date -}}
+            <time class="post-date">
+              {{- .Date.Format "2006-01-02" -}}
+            </time>
+          {{- end -}}
+          {{- with .Params.Author -}}
+            <span class="post-author">{{- . -}}</span>
+          {{- end -}}
+        </div>
+
+        {{ if .Params.tags }}
+          <span class="post-tags">
+            {{ range .Params.tags }}
+            #<a href="{{ (urlize (printf "tags/%s/" . )) | absLangURL }}">
+              {{- . -}}
+            </a>&nbsp;
+            {{ end }}
+          </span>
+        {{ end }}
+
+        {{ partial "cover.html" . }}
+
+        <div class="post-content">
+          {{ if .Params.showFullContent }}
+            {{ .Content }}
+          {{ else if .Description }}
+            <p>{{ .Description | markdownify }}</p>
+          {{ else }}
+            {{ .Summary }}
+          {{ end }}
+        </div>
+
+        {{ if not .Params.showFullContent }}
+          <div>
+            <a class="read-more button inline" href="{{ .RelPermalink }}">[{{ $.Site.Params.ReadMore }}]</a>
+          </div>
+        {{ end }}
+      </article>
+    {{ end }}
+
+    {{ partial "pagination.html" . }}
+  </div>
+{{ end }}
+{{ end }}

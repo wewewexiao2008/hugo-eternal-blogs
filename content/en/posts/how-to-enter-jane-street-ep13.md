@@ -5,6 +5,7 @@ description: "The final episode. What Jane Street actually filters for, the six 
 tags: ["Jane Street", "Application Playbook", "Interview", "Resume", "Quant", "Careers"]
 draft: false
 series: jane-street
+series_order: 13
 ---
 
 Thirteen episodes ago, I started with one question: why does a trading firm write everything in OCaml? ([Ep.1](how-to-enter-jane-street-ep1.md)) Twelve episodes later, the table is covered with parts: probability, Fermi estimation, market microstructure, systems design, OCaml, coding patterns, ML hazards, and a trading simulator with an audited ledger. This is the last episode, and it handles the one question left: how do you get yourself through that door?

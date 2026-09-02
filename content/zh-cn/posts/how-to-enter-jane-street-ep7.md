@@ -5,6 +5,7 @@ description: "芝加哥有多少钢琴调音师？比特币网络耗多少电？
 tags: ["Jane Street", "费米问题", "估算", "超级预测", "量化面试", "面试准备"]
 draft: false
 series: jane-street
+series_order: 7
 ---
 
 "芝加哥有多少钢琴调音师？"

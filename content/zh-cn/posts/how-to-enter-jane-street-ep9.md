@@ -5,6 +5,7 @@ description: "Jane Street 的面试不像刷 LeetCode。更像坐下来和同事
 tags: ["Jane Street", "编程面试", "算法", "数据结构", "量化面试", "面试准备"]
 draft: false
 series: jane-street
+series_order: 9
 ---
 
 LeetCode 刷了几百道之后，套路就很熟悉了：双指针、滑动窗口、动态规划、拓扑排序。记住模板，识别信号，输出答案。FAANG 面试奖励的是这种模式识别能力。

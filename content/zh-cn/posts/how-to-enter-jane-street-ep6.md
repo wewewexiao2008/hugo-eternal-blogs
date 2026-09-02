@@ -5,6 +5,7 @@ description: "一个回测 Sharpe 3.0 的策略，实盘可能只剩 0.5——�
 tags: ["Jane Street", "市场微结构", "做市商", "流动性", "订单簿", "面试准备"]
 draft: false
 series: jane-street
+series_order: 6
 ---
 
 我在 Ep.2 学了概率论，Ep.3 写了 OCaml，Ep.4 啃了系统设计。但直到这期，我才碰到那个最让人清醒的问题：为什么一个回测 Sharpe 3.0 的策略，实盘能缩水到 0.5？

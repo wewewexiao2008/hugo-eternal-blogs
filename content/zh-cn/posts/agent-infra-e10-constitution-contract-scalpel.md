@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E10：一部宪章、一份契约、一把手术刀"
 date: 2026-08-15T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 10
 description: "整合之周过去两周后，三篇论文落地，它们与之前的一切都不同：19 位作者的综述给 harness 工程带来了自己的分类法（ETCLOVG），一项企业研究中代码层强制执行拿到 120/120 而 prompt-only 指令直接失守，HarnessFix 则把失败轨迹当作结构化诊断证据。这就是一个领域停止涌现、开始制度化的样子。"
 tags: ["agent-infrastructure", "harness-engineering", "etclovg", "agent-safety", "observability"]

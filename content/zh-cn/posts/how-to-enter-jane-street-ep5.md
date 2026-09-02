@@ -5,6 +5,7 @@ description: "Jane Street 的月度谜题是量化面试的经典素材。本期
 tags: ["Jane Street", "谜题", "概率论", "信息论", "汉明码", "面试准备"]
 draft: false
 series: jane-street
+series_order: 5
 ---
 
 如果你在 Jane Street 的网站上逛过，大概率会发现他们的 [puzzles 页面](https://www.janestreet.com/puzzles/)。每隔一两个月，他们会发一道新题。有时候是数论，有时候是组合博弈，有时候甚至连规则都模糊不清——而这恰恰是重点。

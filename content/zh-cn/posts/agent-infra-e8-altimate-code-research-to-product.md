@@ -2,7 +2,7 @@
 title: "Agent Infrastructure E8：Altimate Code——当 Harness 工程变成产品"
 date: 2026-08-01T19:00:00+08:00
 draft: false
-series: ["Agent Infrastructure"]
+series: agent-infrastructure
 series_order: 8
 description: "Harness 工程花了 2026 上半年成为一个学术子领域。然后有人做出了产品。这是 Altimate Code 的故事——一个开源的数据工程 agent harness，fork 自 OpenCode，在任何 LLM 之上叠加编译的确定性工具层，证明了便宜模型 + 编译 harness 能打败贵模型没有 harness。"
 tags: ["agent-infrastructure", "harness-engineering", "altimate-code", "data-engineering", "deterministic-tools"]
