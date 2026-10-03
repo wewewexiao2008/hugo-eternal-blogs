@@ -1,8 +1,8 @@
-<!-- Busuanzi page views -->
+<!-- Page views via bloghub backend (rendered by main.js) -->
 {{ if not .Params.hideViews | default false }}
 <div class="post-views">
   <span class="views-count">
-    👁️ <span id="busuanzi_value_page_pv">loading</span> views
+    👁️ <span class="bloghub-pv" data-path="{{ .RelPermalink }}">…</span> views
   </span>
 </div>
 {{ end }}

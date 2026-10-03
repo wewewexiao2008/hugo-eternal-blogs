@@ -41,6 +41,8 @@ enableRobotsTXT = true
   showMenuItems = 5
   favicon = "favicon.ico"
   showLanguageSelector = true
+  # bloghub: 自有后端(浏览统计/账号/评论), 部署于 Mac mini, 见 ~/github/bloghub
+  bloghubBase = "https://bloghub.eternalx.top"
 
 [taxonomies]
   tag = "tags"

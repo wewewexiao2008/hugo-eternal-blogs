@@ -286,3 +286,17 @@
   .series-grid { grid-template-columns: 1fr; }
   .back-to-top { bottom: 1rem; right: 1rem; }
 }
+
+/* === BlogHub comments + views (2026-10-03) === */
+.bloghub-comment { border-bottom: 1px solid var(--border-color, rgba(128,128,128,.25)); padding: 10px 0; }
+.bloghub-comment-head { font-size: .85em; opacity: .85; }
+.bloghub-comment-date { opacity: .6; font-size: .9em; }
+.bloghub-comment-body { margin-top: 4px; white-space: pre-wrap; word-break: break-word; }
+.bloghub-empty { opacity: .6; font-size: .9em; }
+.bloghub-link { background: none; border: none; color: #2563eb; cursor: pointer; font-size: .8em; padding: 0 0 0 10px; font-family: inherit; }
+.bloghub-link.danger { color: #dc2626; }
+.bloghub-input { width: 100%; min-height: 72px; margin: 8px 0; padding: 8px 10px; border: 1px solid var(--border-color, rgba(128,128,128,.4)); border-radius: 6px; font: inherit; background: transparent; color: inherit; resize: vertical; }
+.bloghub-btnrow { display: flex; align-items: center; gap: 10px; }
+.bloghub-btn { padding: 6px 18px; border: 1px solid var(--border-color, rgba(128,128,128,.4)); border-radius: 6px; background: transparent; color: inherit; cursor: pointer; font: inherit; font-size: .85em; }
+.bloghub-btn:hover { background: rgba(128,128,128,.12); }
+.bloghub-status { font-size: .8em; opacity: .7; }
